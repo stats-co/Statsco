@@ -1,61 +1,49 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const matchFeed = document.getElementById('matchFeed');
+  const container = document.getElementById('competitionFeed');
 
-  // Simulated match data (replace with API later)
-  const matches = [
+  const competitions = [
     {
-      players: 'Djokovic vs Alcaraz',
-      score: '6–3, 3–4',
-      serve: 'Alcaraz',
-      stats: ['1st Serve: 74%', 'Winners: 22', 'UE: 13'],
-      momentum: [60, 40],
-      odds: 'Djokovic 1.65 | Alcaraz 2.25'
+      name: 'ATP Rome – Men’s Singles',
+      matches: [
+        { players: 'Djokovic vs Alcaraz', score: '6–3, 5–4', time: 'Live' },
+        { players: 'Sinner vs Tsitsipas', score: '7–6, 2–2', time: '2nd Set' }
+      ]
     },
     {
-      players: 'Swiatek vs Gauff',
-      score: '7–6, 1–2',
-      serve: 'Swiatek',
-      stats: ['1st Serve: 68%', 'Winners: 15', 'UE: 11'],
-      momentum: [45, 55],
-      odds: 'Swiatek 1.80 | Gauff 2.10'
+      name: 'WTA Rome – Women’s Singles',
+      matches: [
+        { players: 'Swiatek vs Gauff', score: '6–4, 3–5', time: 'Live' },
+        { players: 'Sabalenka vs Jabeur', score: 'Not started', time: '13:00' }
+      ]
     }
   ];
 
-  function renderMatches() {
-    matchFeed.innerHTML = ''; // Clear existing cards
-    matches.forEach(match => {
-      const card = document.createElement('article');
-      card.className = 'match-card';
-      card.innerHTML = `
-        <header>
-          <div class="match-title">🎾 ${match.players}</div>
-          <div class="match-meta">Score: ${match.score} • Next: ${match.serve}</div>
-        </header>
-        <div class="momentum-bar">
-          <div class="momentum home" style="width: ${match.momentum[0]}%;"></div>
-          <div class="momentum away" style="width: ${match.momentum[1]}%;"></div>
-        </div>
-        <div class="key-stats">
-          <span>${match.stats[0]}</span>
-          <span>${match.stats[1]}</span>
-          <span>${match.stats[2]}</span>
-        </div>
-        <div class="odds-bar">💸 ${match.odds}</div>
-      `;
-      matchFeed.appendChild(card);
-    });
-  }
+  competitions.forEach(comp => {
+    const section = document.createElement('section');
+    section.className = 'competition-window';
 
-  renderMatches();
+    section.innerHTML = `
+      <div class="section-header">
+        <span>${comp.name}</span>
+        <span>▼</span>
+      </div>
+      <div class="section-body">
+        ${comp.matches.map(m => `
+          <div class="match-row">
+            <span>${m.players}</span>
+            <span>${m.score} • ${m.time}</span>
+          </div>`).join('')}
+      </div>
+    `;
 
-  // Simulate live updates every 10s
-  setInterval(() => {
-    matches.forEach(m => {
-      m.momentum = [
-        Math.floor(Math.random() * 100),
-        100 - m.momentum[0]
-      ];
+    container.appendChild(section);
+  });
+
+  // Toggle sections
+  document.querySelectorAll('.section-header').forEach(header => {
+    header.addEventListener('click', () => {
+      const body = header.nextElementSibling;
+      body.style.display = body.style.display === 'block' ? 'none' : 'block';
     });
-    renderMatches();
-  }, 10000);
+  });
 });
