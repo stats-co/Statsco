@@ -1,0 +1,2 @@
+# Statsco
+Detailed sports analysis
