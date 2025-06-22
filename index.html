@@ -3,29 +3,32 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>STATSCO | Live Tennis Dashboard</title>
+  <title>STATSCO | Live Tennis</title>
   <link rel="stylesheet" href="style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
-  <!-- 🔴 Live Ticker -->
-  <div class="live-ticker" role="marquee">
-    🎾 Djokovic vs Alcaraz: 6-3, 3-4 | 🚨 Swiatek leads Gauff 7-6, 1-2 | 💥 Nadal 4-4 Zverev
+  <!-- Date Selector -->
+  <div class="date-bar">
+    <button class="date-btn active">Mon</button>
+    <button class="date-btn">Tue</button>
+    <button class="date-btn">Wed</button>
+    <button class="date-btn">Thu</button>
+    <button class="date-btn">Fri</button>
+    <button class="date-btn">Sat</button>
+    <button class="date-btn">Sun</button>
   </div>
 
-  <!-- 🟩 Match Feed -->
-  <main class="match-grid" id="matchFeed">
-    <!-- Cards injected by JavaScript -->
-  </main>
+  <!-- Match Sections -->
+  <main id="competitionFeed" class="competition-feed"></main>
 
-  <!-- ⚫ Sticky Mobile Nav -->
-  <nav class="bottom-nav" role="navigation">
-    <a href="#">🏠 Home</a>
-    <a href="#">📊 Stats</a>
-    <a href="#">💸 Odds</a>
-    <a href="#">🔔 Alerts</a>
-    <a href="#">⚙️ Settings</a>
+  <!-- Bottom Navigation -->
+  <nav class="bottom-nav">
+    <a href="#">🏠</a>
+    <a href="#">📊</a>
+    <a href="#">💸</a>
+    <a href="#">🔔</a>
+    <a href="#">⚙️</a>
   </nav>
 
   <script src="script.js"></script>
