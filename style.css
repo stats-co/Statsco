@@ -1,69 +1,98 @@
-/* Reset & base */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f1f2f7;
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f0f9fc;
   color: #222;
 }
 
-/* Layout container */
-.container {
-  display: flex;
-  height: 100vh;
-}
-
-/* Sidebar */
-.sidebar {
-  width: 220px;
-  background-color: #1e2a60;
-  color: white;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-}
-
-.sidebar h2 {
-  margin-bottom: 30px;
-  font-size: 1.5rem;
-}
-
-.sidebar nav a {
-  color: #f0f0f0;
-  text-decoration: none;
-  margin-bottom: 15px;
+/* Live Ticker */
+.live-ticker {
+  background: #b3e5fc;
+  padding: 10px 15px;
   font-weight: bold;
+  font-size: 0.9rem;
+  color: #003e60;
+  overflow-x: auto;
+  white-space: nowrap;
+  border-bottom: 1px solid #90caf9;
 }
 
-.sidebar nav a:hover {
-  color: #90cdf4;
-}
-
-/* Main content area */
-.main-content {
-  flex: 1;
-  padding: 30px;
-  overflow-y: auto;
-}
-
-.window {
-  background-color: white;
-  margin-bottom: 30px;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
-}
-
-.window h3 {
-  margin-bottom: 15px;
-}
-
-/* Widget row layout */
-.widget-row {
+/* Match Grid */
+.match-grid {
   display: flex;
-  gap: 20px;
-  flex-wrap:
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 16px;
+  justify-content: center;
+}
+
+.match-card {
+  background: white;
+  border-left: 5px solid #03a9f4;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  padding: 15px;
+}
+
+/* Card Sections */
+.match-title {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 4px;
+}
+
+.match-meta {
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.momentum-bar {
+  margin: 10px 0;
+  display: flex;
+  height: 10px;
+  background: #e0f7fa;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.momentum.home {
+  background-color: #03a9f4;
+}
+
+.momentum.away {
+  background-color: #81d4fa;
+}
+
+.key-stats {
+  font-size: 0.8rem;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.odds-bar {
+  font-size: 0.85rem;
+  background: #f1f8ff;
+  padding: 6px;
+  border-radius: 4px;
+  text-align: center;
+}
+
+/* Bottom Nav */
+.bottom-nav {
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  justify-content: space-around;
+  background: #ffffff;
+  border-top: 1px solid #ccc;
+  padding: 10px 0;
+  font-size: 1.2rem;
+}
+
+.bottom-nav a {
+  color: #0288d1;
+  text-decoration: none;
+}
