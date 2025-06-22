@@ -3,45 +3,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>STATSCO | Tennis Dashboard</title>
+  <title>STATSCO | Live Tennis Dashboard</title>
   <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-  <div class="container">
-    <aside class="sidebar">
-      <h2>🎾 STATSCO</h2>
-      <nav>
-        <a href="#">Dashboard</a>
-        <a href="#">Player Stats</a>
-        <a href="#">Match Timeline</a>
-        <a href="#">Head-to-Head</a>
-        <a href="#">Rankings</a>
-        <a href="#">Settings</a>
-      </nav>
-    </aside>
 
-    <main class="main-content">
-      <section class="window" id="overview">
-        <h3>📊 Live Dashboard Overview</h3>
-        <div class="widget-row">
-          <div class="widget">🔥 Top Performer</div>
-          <div class="widget">🎯 Accuracy Leader</div>
-          <div class="widget">💪 Longest Rally</div>
-        </div>
-      </section>
-
-      <section class="window" id="timeline">
-        <h3>🗓️ Recent Matches Timeline</h3>
-        <iframe src="timeline.html"></iframe>
-      </section>
-
-      <section class="window" id="insights">
-        <h3>📈 Performance Insights</h3>
-        <canvas id="performanceChart"></canvas>
-      </section>
-    </main>
+  <!-- 🔴 Live Ticker -->
+  <div class="live-ticker" role="marquee">
+    🎾 Djokovic vs Alcaraz: 6-3, 3-4 | 🚨 Swiatek leads Gauff 7-6, 1-2 | 💥 Nadal 4-4 Zverev
   </div>
+
+  <!-- 🟩 Match Feed -->
+  <main class="match-grid" id="matchFeed">
+    <!-- Cards injected by JavaScript -->
+  </main>
+
+  <!-- ⚫ Sticky Mobile Nav -->
+  <nav class="bottom-nav" role="navigation">
+    <a href="#">🏠 Home</a>
+    <a href="#">📊 Stats</a>
+    <a href="#">💸 Odds</a>
+    <a href="#">🔔 Alerts</a>
+    <a href="#">⚙️ Settings</a>
+  </nav>
 
   <script src="script.js"></script>
 </body>
-</html
+</html>
