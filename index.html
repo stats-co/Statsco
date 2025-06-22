@@ -3,39 +3,45 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>STATSCO | Player Stats Hub</title>
+  <title>STATSCO | Tennis Dashboard</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <h1>🎾 STATSCO</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="timeline.html">Timeline</a>
-      <a href="insights.html">Insights</a>
-    </nav>
-  </header>
+  <div class="container">
+    <aside class="sidebar">
+      <h2>🎾 STATSCO</h2>
+      <nav>
+        <a href="#">Dashboard</a>
+        <a href="#">Player Stats</a>
+        <a href="#">Match Timeline</a>
+        <a href="#">Head-to-Head</a>
+        <a href="#">Rankings</a>
+        <a href="#">Settings</a>
+      </nav>
+    </aside>
 
-  <main>
-    <section class="intro">
-      <h2>Welcome to STATSCO</h2>
-      <p>Your one-stop shop for real-time tennis data, insights, and interactive timelines.</p>
-    </section>
+    <main class="main-content">
+      <section class="window" id="overview">
+        <h3>📊 Live Dashboard Overview</h3>
+        <div class="widget-row">
+          <div class="widget">🔥 Top Performer</div>
+          <div class="widget">🎯 Accuracy Leader</div>
+          <div class="widget">💪 Longest Rally</div>
+        </div>
+      </section>
 
-    <section class="features">
-      <h3>What You Can Explore:</h3>
-      <ul>
-        <li>📈 Player Performance Over Time</li>
-        <li>🎯 Shot Accuracy & Rally Lengths</li>
-        <li>🌍 Global Rankings & Tournament History</li>
-      </ul>
-    </section>
-  </main>
+      <section class="window" id="timeline">
+        <h3>🗓️ Recent Matches Timeline</h3>
+        <iframe src="timeline.html"></iframe>
+      </section>
 
-  <footer>
-    <p>Built by Asher using API tennis data | © 2025</p>
-  </footer>
+      <section class="window" id="insights">
+        <h3>📈 Performance Insights</h3>
+        <canvas id="performanceChart"></canvas>
+      </section>
+    </main>
+  </div>
 
   <script src="script.js"></script>
 </body>
-</html>
+</html
