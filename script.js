@@ -1,44 +1,61 @@
-document.addEventListener("DOMContentLoaded", () => {
-  console.log("STATSCO Dashboard loaded.");
+document.addEventListener('DOMContentLoaded', () => {
+  const matchFeed = document.getElementById('matchFeed');
 
-  // Highlight active nav link (basic placeholder logic)
-  const navLinks = document.querySelectorAll('.sidebar nav a');
-  navLinks.forEach(link => {
-    link.addEventListener('click', e => {
-      navLinks.forEach(l => l.classList.remove('active'));
-      link.classList.add('active');
-      e.preventDefault();
-    });
-  });
+  // Simulated match data (replace with API later)
+  const matches = [
+    {
+      players: 'Djokovic vs Alcaraz',
+      score: '6–3, 3–4',
+      serve: 'Alcaraz',
+      stats: ['1st Serve: 74%', 'Winners: 22', 'UE: 13'],
+      momentum: [60, 40],
+      odds: 'Djokovic 1.65 | Alcaraz 2.25'
+    },
+    {
+      players: 'Swiatek vs Gauff',
+      score: '7–6, 1–2',
+      serve: 'Swiatek',
+      stats: ['1st Serve: 68%', 'Winners: 15', 'UE: 11'],
+      momentum: [45, 55],
+      odds: 'Swiatek 1.80 | Gauff 2.10'
+    }
+  ];
 
-  // Sample Chart.js line chart (requires Chart.js to be included in index.html)
-  const ctx = document.getElementById('performanceChart');
-  if (ctx && window.Chart) {
-    new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: ['Set 1', 'Set 2', 'Set 3', 'Set 4', 'Set 5'],
-        datasets: [{
-          label: 'Serve Accuracy (%)',
-          data: [72, 85, 78, 90, 83],
-          borderColor: '#1e2a60',
-          backgroundColor: 'rgba(30, 42, 96, 0.1)',
-          tension: 0.3,
-          fill: true
-        }]
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: { position: 'top' },
-          title: {
-            display: true,
-            text: 'Match Performance Overview'
-          }
-        }
-      }
+  function renderMatches() {
+    matchFeed.innerHTML = ''; // Clear existing cards
+    matches.forEach(match => {
+      const card = document.createElement('article');
+      card.className = 'match-card';
+      card.innerHTML = `
+        <header>
+          <div class="match-title">🎾 ${match.players}</div>
+          <div class="match-meta">Score: ${match.score} • Next: ${match.serve}</div>
+        </header>
+        <div class="momentum-bar">
+          <div class="momentum home" style="width: ${match.momentum[0]}%;"></div>
+          <div class="momentum away" style="width: ${match.momentum[1]}%;"></div>
+        </div>
+        <div class="key-stats">
+          <span>${match.stats[0]}</span>
+          <span>${match.stats[1]}</span>
+          <span>${match.stats[2]}</span>
+        </div>
+        <div class="odds-bar">💸 ${match.odds}</div>
+      `;
+      matchFeed.appendChild(card);
     });
-  } else {
-    console.warn("Chart.js is not loaded or canvas not found.");
   }
+
+  renderMatches();
+
+  // Simulate live updates every 10s
+  setInterval(() => {
+    matches.forEach(m => {
+      m.momentum = [
+        Math.floor(Math.random() * 100),
+        100 - m.momentum[0]
+      ];
+    });
+    renderMatches();
+  }, 10000);
 });
